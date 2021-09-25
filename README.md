@@ -8,7 +8,7 @@
 ![](2021-09-24-22-55-48.png)
 
 # Setup 3: stand-up a web application
-- install nodejs, mongoDb, Nginx, pm2
+- install nodejs, Postgres, Nginx, pm2
 - deploy simle Ecommerce app (nodeJS + React): https://github.com/dhatGuy/PERN-Store
 - start backend using `pm2` by running `pm2 start index.js` (inside the `server` folder)
 ![](2021-09-25-15-37-50.png)
@@ -21,7 +21,7 @@
 # Setup 4: Install New Relic Agents
 
 ## Install APM NodeJs Language Agent
-- APM language agent => hook directly to the runtime of the backend code (in our case, it is ExpressJS backend API) and enable end to end transaction tracing (ExpressJS REST api route => Repository => MongoDB)
+- APM language agent => hook directly to the runtime of the backend code (in our case, it is ExpressJS backend API) and enable end to end transaction tracing (ExpressJS REST api route => Repository => Postgres)
 - install NodeJS APM Language Agent
 ![](2021-09-24-23-15-10.png)
 ![](2021-09-24-23-16-37.png)
@@ -31,7 +31,6 @@
 ![](2021-09-25-00-25-38.png)
 
 ## Install Postgres Infrastructure Agent
-- works ✅
 ![](2021-09-25-10-08-58.png)
 ![](2021-09-25-15-41-20.png)
 ![](2021-09-25-15-43-18.png)
@@ -42,7 +41,6 @@
 ![](2021-09-25-00-37-41.png)
 
 ## Install Browser Agent
-- works ✅
 ![](2021-09-25-16-34-46.png)
 
 ### Question: What are the main differences between the various agents and integrations?
