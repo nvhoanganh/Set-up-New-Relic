@@ -13,7 +13,7 @@
 - start backend using `pm2` by running `pm2 start index.js` (inside the `server` folder)
 ![](2021-09-25-15-37-50.png)
 - backend can be accessed via `http://newrelictest.australiaeast.cloudapp.azure.com:8080/api/products` ✅
-- run prod build of frontend and copy to `/var/pernstore` folder 
+- build frontend and copy to `/var/pernstore` folder 
 - update `/etc/nginx/sites-enabled/default` file and set root to point to `/var/pernstore`
 - ui can be accessed via `http://newrelictest.australiaeast.cloudapp.azure.com` ✅
 ![](2021-09-25-15-38-43.png)
@@ -120,5 +120,32 @@ $browser
   - keep systems warn before real user login (e.g for serverless apps)
 
 ### Question: If we were to run the exact same test pattern as a Real User and then as a Synthetic Script, would there be any difference between the two executions as observed within the New Relic Platform?
-- for API tests, e.g. ping or scripted API, there won't be any difference (New Relic wouldn't know)
-- for Scripted Browser test, New Relic `should` be able to know that is is not real user who is accessing the system
+- from the networking point of view, there should be no difference between real user and Synthetic script requests, however when New Relic send the request, it added `x-newrelic-synthetics` header which it is used to identify which requests are from real user and which are not.
+![](2021-09-26-12-31-26.png)
+
+# Telemetry Data Platform
+### Question: What is the difference between a Metric and an Event?
+- both metrics and events are time series data, metrics are sampled at regular intervals (e.g. Avg memory usage of a vm), events are irregular and unpredictable (e.g. backend exceptions, user visits)
+
+# Step 6: Import Logs
+- logs for pm2 are stored at `~/.pm2/logs`
+- added logs for Pern store (both error and normal) ✅
+![](2021-09-26-12-00-09.png)
+![](2021-09-26-12-01-44.png)
+
+### Question: What’s the value of bringing logs into the New Relic One platform?
+- Most common usecase is troubleshooting some exceptions in prod. With logs available in the same interface, user can see exactly what went wrong (using Stacktrace)
+![](2021-09-26-12-08-49.png)
+
+### Question: What additional information could you obtain from Logs that you couldn’t obtain using the other sources of data?
+- App logs are written by developers and contains valuable context information which cannot be captured by other automated ways. For example, if we get 403 Forbidden from the backend API, APM language agent will not be able to tell the reason why user get 403 Forbidden, but if developers log the reason why in the log file then we can see this in New Relic.
+- Another example is the information captured by Infrastucture agents like URL parameters (products/id) or JWT token is not as useful compared to the real product name (backend query database) and user role (from JWT token) which can be logged and captured by New Relic
+
+### Question: Do you see an opportunity to build applications without the need to use logs? How would you approach the problem without losing visibility?
+- Do you see an opportunity to build applications without the need to use logs ⭐️
+- If we don't have applications logs
+
+
+# Step 7:Import Traces
+- Distributed Trace enabled and working ✅
+![](2021-09-26-12-38-06.png)
