@@ -228,4 +228,4 @@ $browser
 - Proactive Detection uses machine learning to automatically surface anomalies with monitored applications.
 
 ### Question: It seems like this makes the SRE role irrelevant, consider if you would agree or disagree
-- I disagree, with this, it would make it easier for SRE not making it irrelevant. 
+- I disagree, with Applied Intelligence, it would make it easier for SRE not making it irrelevant. 
