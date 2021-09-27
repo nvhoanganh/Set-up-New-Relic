@@ -36,9 +36,8 @@
 ![](2021-09-25-15-43-18.png)
 
 ## Install NgInx Infrastructure Agent
-- see data on connection and client requests
-- not working ❌
-![](2021-09-25-00-37-41.png)
+- enable /nginx_status using stub_status [link](https://www.tecmint.com/enable-nginx-status-page/)
+![](2021-09-27-22-22-17.png)
 
 ## Install Browser Agent
 ![](2021-09-25-16-34-46.png)
@@ -174,7 +173,7 @@ $browser
 	- SQL is in obfuscated format
 	- it looks like it is only showing the table name and operation name (e.g. insert/select)
 - Can you change what SQL metrics we capture?
-	- by configuring postgresql-config.yml file you can [here](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/postgresql-monitoring-integration/#config)
+	- by configuring postgresql-config.yml file you can [here](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/postgresql-monitoring-integration/#config) (under /etc/newrelic-infra/integrations.d)
 - Try changing the configuration of the SQL we capture so we can get more meaningful metrics. Take a look here ⭐️
 
 # Step 8: Query Everything
@@ -229,3 +228,5 @@ $browser
 
 ### Question: It seems like this makes the SRE role irrelevant, consider if you would agree or disagree
 - I disagree, with Applied Intelligence, it would make it easier for SRE not making it irrelevant. 
+
+![](2021-09-27-21-32-23.png)
